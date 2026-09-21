@@ -13,11 +13,8 @@ def root():
     return {'Message':"IPL Data Loaded Successful"}
 
 @app.get("/ipl/teams")
-def return_unique_teams() -> dict:
-    unique_teams = ipl['Team1'].value_counts() + ipl['Team2'].value_counts()
-    return unique_teams.to_dict()
+def return_unique_teams():
+    unique_teams = list(set(ipl['Team1']))
+    return {"Teams": unique_teams}
+     
     
-    
-
-
-print( ipl['Team1'].value_counts() + ipl['Team2'].value_counts())
